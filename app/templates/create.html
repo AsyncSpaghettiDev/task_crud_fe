@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} New Task {% endblock title %}
+
+{% block content %}
+<h1>New Task</h1>
+<form method="post" action="{{url_for('create_task')}}" class="bg-dark text-bg-dark p-3 rounded">
+    <div class="mb-3">
+        <label for="task_title">Title</label>
+        <input type="text" name="task_title" id="task_title" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="task_subtitle">Subtitle</label>
+        <input type="text" name="task_subtitle" id="task_subtitle" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="task_body">Body</label>
+        <textarea style="resize: none;" name="task_body" id="task_body" class="form-control" required></textarea>
+    </div>
+    <!-- <div class="mb-3">
+        <label for="task_status">Active</label>
+        <input type="checkbox" name="task_status" id="task_status" checked>
+    </div> -->
+    <div class="text-end">
+        <a class="btn btn-outline-light me-2" href="{{url_for('view_tasks')}}">Go back</a>
+        <button type="submit" class="btn btn-success">Create</button>
+    </div>
+</form>
+{% endblock content %}

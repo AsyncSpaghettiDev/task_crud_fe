@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{task['title']}}
+{% endblock title %}
+
+{% block content %}
+
+<h1 class="mb-3">Update task</h1>
+
+<form action="{{url_for('update_task', task_id=task['id']) }}" class="bg-dark text-bg-dark p-3 rounded" method="post">
+    <div class="mb-3">
+        <label for="title" class="form-label fs-5 fw-semibold">Title</label>
+        <input type="text" class="form-control" id="title" name="title" value="{{task['title']}}">
+    </div>
+    <div class="mb-3">
+        <label for="subtitle" class="form-label fs-5 fw-semibold">Subtitle</label>
+        <input type="text" class="form-control" id="subtitle" name="subtitle" value="{{task['subtitle']}}">
+    </div>
+    <div class="mb-3">
+        <label for="body" class="form-label fs-5 fw-semibold">Body</label>
+        <textarea style="resize: none;" class="form-control" id="body" name="body" rows="3">{{task['body']}}</textarea>
+    </div>
+    <div class="mb-3 form-check">
+        <label for="active" class="form-check-label fs-6">Active</label>
+        <!-- checkbox -->
+        <input type="checkbox" class="form-check-input" id="active" name="active" value="1" {% if task['active'] %}
+            checked {% endif %}>
+
+    </div>
+    <div class="text-end">
+        <a class="btn btn-outline-light me-2" href="{{url_for('view_tasks')}}">Go back</a>
+        <button type="submit" class="btn btn-success">Update</button>
+    </div>
+</form>
+
+{% endblock content %}

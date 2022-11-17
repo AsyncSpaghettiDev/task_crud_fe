@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{task['title']}}
+{% endblock title %}
+
+{% block content %}
+<h1> {{task["title"]}} </h1>
+<h2> {{task["subtitle"]}} </h2>
+<p> {{task["body"]}} </p>
+<label for="task_status">Active</label>
+<input type="checkbox" name="task_status" id="task_status" {% if task['active'] %} checked {% endif %} disabled>
+
+<a href="{{ url_for('view_tasks') }}" class="btn btn-primary d-block" style="width: max-content;">Go back</a>
+{% endblock content %}
